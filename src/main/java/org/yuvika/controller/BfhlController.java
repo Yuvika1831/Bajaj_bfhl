@@ -7,6 +7,7 @@ import org.yuvika.dto.BfhlResponse;
 import org.yuvika.service.BfhlService;
 
 @RestController
+@RequestMapping("/")   // ✅ base mapping added (important fix)
 public class BfhlController {
 
     private final BfhlService service;
@@ -24,9 +25,7 @@ public class BfhlController {
     public ResponseEntity<BfhlResponse> process(
             @RequestBody BfhlRequest request) {
 
-        return ResponseEntity.ok(
-                service.process(request)
-        );
+        return ResponseEntity.ok(service.process(request));
     }
 
     @GetMapping("/health")
