@@ -1,0 +1,26 @@
+package org.yuvika.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.yuvika.dto.BfhlRequest;
+import org.yuvika.dto.BfhlResponse;
+import org.yuvika.service.BfhlService;
+
+@RestController
+public class BfhlController {
+
+    private final BfhlService service;
+
+    public BfhlController(BfhlService service) {
+        this.service = service;
+    }
+
+    @PostMapping("/bfhl")
+    public ResponseEntity<BfhlResponse> process(
+            @RequestBody BfhlRequest request) {
+
+        return ResponseEntity.ok(
+                service.process(request)
+        );
+    }
+}
