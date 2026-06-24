@@ -15,6 +15,11 @@ public class BfhlController {
         this.service = service;
     }
 
+    @GetMapping("/bfhl")
+    public ResponseEntity<String> getBfhl() {
+        return ResponseEntity.ok("BFHL API is running");
+    }
+
     @PostMapping("/bfhl")
     public ResponseEntity<BfhlResponse> process(
             @RequestBody BfhlRequest request) {
